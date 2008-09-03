@@ -3,7 +3,7 @@ AUTOMAKE_OPTIONS = foreign
 SUBDIRS = src
 
 noinst_HEADERS = src/QC_TuxedoAdapter.h \
-	src/QoreTuxedoAdapter.h
+	src/QoreTuxedoAdapter.h \
 	src/tuxedo_module.h \
 	src/minitest.hpp
 
