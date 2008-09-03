@@ -23,7 +23,7 @@
 */
 
 #include <qore/Qore.h>
-#include <qore/minitest.hpp>
+#include "minitest.hpp"
 #include <qore/SystemEnvironment.h>
 
 #include <limits.h>
@@ -884,7 +884,7 @@ int QoreTuxedoAdapter::init()
     return tpinit(0) == -1 ? tperrno : 0;
   }
   int size = sizeof(TPINIT) + m_binary_data.size();
-  TPINIT* buff = (TPINIT*)tpalloc("TPINIT", 0, size);
+  TPINIT* buff = (TPINIT*)tpalloc((char *)"TPINIT", 0, size);
   if (!buff) return tperrno;
   ON_BLOCK_EXIT(tpfree, (char*)buff);
 

@@ -23,7 +23,7 @@
 */
 
 #include <qore/Qore.h>
-#include <qore/minitest.hpp>
+#include "minitest.hpp"
 
 #include "tuxedo_module.h"
 #include <atmi.h>

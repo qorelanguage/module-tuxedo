@@ -93,6 +93,23 @@ if test -z "$MODULE_SUFFIX" ; then
 fi
 AC_SUBST(MODULE_SUFFIX)
 
+AC_ARG_ENABLE([single-compilation-unit],
+  [AS_HELP_STRING([--enable-single-compilation-unit],
+		  [enable compilation as a single unit (default: on)])],
+  [case "${enable_single_compilation_unit}" in
+       yes|no) ;;
+       *)      AC_MSG_ERROR(bad value ${enable_single_compilation_unit} for --enable-single-compilation-unit) ;;
+      esac],
+  [enable_single_compilation_unit=yes])
+
+AC_ARG_ENABLE([scu],
+  [AS_HELP_STRING([--enable-scu],
+		  [short for --enable-single-compilation-unit: enable compilation as a single unit])],
+  [case "${enable_scu}" in
+       yes|no) enable_single_compilation_unit=$enable_scu;;
+       *)      AC_MSG_ERROR(bad value ${enable_scu} for --enable-scu) ;;
+      esac])
+
 AC_ARG_ENABLE([64bit],
   [AS_HELP_STRING([--enable-64bit],
 		  [enable 64bit support (default: auto)])],
@@ -173,6 +190,14 @@ else
    fi
    bits=32
 fi
+
+# checks for how to build threads
+ACX_PTHREAD
+if test "$acx_pthread_ok" = "no"; then
+   AC_MSG_ERROR(POSIX threads do not seem to be supported on this platform, aborting)
+fi
+CXXFLAGS="$CXXFLAGS $PTHREAD_CFLAGS"
+LDFLAGS="$LDFLAGS $PTHREAD_LIBS"
 
 # function to help find the tuxedo directory
 find_tux()
@@ -265,7 +290,7 @@ if test -n "$with_tuxedo"; then
       8.*) LDFLAGS="$LDFLAGS $TUXEDO_LIBS -lgiconv -lusort" 
 	   ;;
       9.*|unknown|*)
-           LDFLAGS="$LDFLAGS $TUXEDO_LIBS -lgiconv -lusort -lutrace"
+           LDFLAGS="$LDFLAGS $TUXEDO_LIBS -lgiconv -lusort -lutrace -ldl"
 	   ;;
    esac
 
@@ -280,7 +305,7 @@ tpinit((TPINIT*)0);
    LDFLAGS="$SAVE_LDFLAGS"
 
    if test ${tuxedo_links} = "no"; then
-      AC_MSG_RESULT([failed: cannot link with the Tuxedo libraries in ${with_tuxedo}/lib, skipping support for the tuxedo module])
+      AC_MSG_ERROR([failed: cannot link with the Tuxedo libraries in ${with_tuxedo}/lib])
       unset with_tuxedo
       unset TUXEDO_CPPFLAGS
       unset TUXEDO_LIBS
@@ -511,6 +536,7 @@ AC_DEFINE_UNQUOTED([TARGET_BITS], $bits, [32 or 64 bit build])
 
 AM_CONDITIONAL([COND_DEBUG],      [test "$enable_debug" = yes])
 AM_CONDITIONAL([COND_PROFILE],    [test "$enable_profile" = yes])
+AM_CONDITIONAL([COND_SINGLE_COMPILATION_UNIT], [test "$enable_single_compilation_unit" = yes])
 
 AC_CONFIG_FILES([Makefile src/Makefile])
 AC_OUTPUT

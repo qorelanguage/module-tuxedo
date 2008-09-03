@@ -23,7 +23,7 @@
 */
 
 #include <qore/Qore.h>
-#include <qore/minitest.hpp>
+#include "minitest.hpp"
 
 #include "userlog.h"
 #include <string>
@@ -754,7 +754,7 @@ static AbstractQoreNode* writeToLog(QoreObject* self, QoreTuxedoAdapter* adapter
   if (!n) return xsink->raiseException("TUXEDO-ADAPTER-WRITE-TO-LOG", "One parameter expected - string to be written");
   const char* text = n->getBuffer();
   if (!text) text = (char*)"";
-  userlog("%s", text);
+  userlog((char *)"%s", text);
   return 0;
 }
 
