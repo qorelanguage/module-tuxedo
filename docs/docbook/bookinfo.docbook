@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<bookinfo>
+<title>Tuxedo Module 0.1</title>
+<subtitle>Module Reference</subtitle>
+<authorgroup>
+<author>
+<firstname>Pavel</firstname>
+<surname>Vozenilek</surname>
+</author>
+</authorgroup>
+
+<date>5 Sep 2008</date>
+<releaseinfo>V. 0.1</releaseinfo>
+
+<revhistory>
+
+<revision>
+  <revnumber>0.1</revnumber>
+  <date>5 Sep 2008</date>
+  <authorinitials>dn</authorinitials>
+  <revremark>separated from qore documentation</revremark>
+</revision>
+
+</revhistory>
+
+</bookinfo>
+
+<!-- Copyright (C) 2004, 2005, 2006, 2007 David Nichols, All Rights Reserved -->
