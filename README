@@ -7,9 +7,12 @@ The original author is unfortunately not working on it anymore.
 
 Requires qore 0.7.0 and Tuxedo headers and libraries to build.
 
-documentation TBD
+documentation: docs/tuxedo-module-doc.html
+(built from docbook sources in docs/docbook)
 
-there is no example script at the moment.
+NOTE: there is no example script at the moment.
+because Pavel is not working on this anymore and there is no example script, I don't actually know how well this module works...
+
 
 BUILD AND INSTALL
 -----------------
