@@ -88,7 +88,7 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(-,root,root,-)
 %{module_dir}/tuxedo.qmod
-%doc COPYING README ChangeLog AUTHORS docs/tuxedo-module-doc.html
+%doc COPYING README ChangeLog AUTHORS docs/tuxedo-module-doc.html docs/qore-style.css docs/img
 
 %changelog
 * Tue Sep 2 2008 David Nichols <david_nichols@users.sourceforge.net>
