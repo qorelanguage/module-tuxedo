@@ -287,7 +287,7 @@ if test -n "$with_tuxedo"; then
    CPPFLAGS="$CPPFLAGS $TUXEDO_CPPFLAGS"
 
    case "$tux_ver" in
-      8.*) LDFLAGS="$LDFLAGS $TUXEDO_LIBS -lgiconv -lusort" 
+      8.*) LDFLAGS="$LDFLAGS $TUXEDO_LIBS -lgiconv -lusort -ldl" 
 	   ;;
       9.*|unknown|*)
            LDFLAGS="$LDFLAGS $TUXEDO_LIBS -lgiconv -lusort -lutrace -ldl"
