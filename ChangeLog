@@ -1,0 +1,67 @@
+2008-09-08 17:47  david_nichols
+
+	* Makefile.am, qore-tuxedo-module.spec: fixed packaging for docs
+
+2008-09-08 17:40  david_nichols
+
+	* configure.ac: fixed configure with tuxedo 8
+
+2008-09-06 07:05  david_nichols
+
+	* docs/tuxedo-module-doc.html: added documentation file
+
+2008-09-05 13:22  david_nichols
+
+	* README: updated README
+
+2008-09-05 13:20  david_nichols
+
+	* docs/docbook, docs/docbook/Makefile,
+	  docs/docbook/bookinfo.docbook, docs/docbook/driver.xsl,
+	  docs/docbook/module.docbook, docs/docbook/tuxedo-module.docbook,
+	  docs/img, docs/img/acrobat.gif, docs/img/acrobat_a.gif,
+	  docs/img/disk.gif, docs/img/qbullet-note.gif,
+	  docs/img/qbullet-note_a.gif, docs/img/remote.gif,
+	  docs/img/remote_a.gif, docs/img/scrollup.gif,
+	  docs/img/scrollup_a.gif, docs/img/word.gif, docs/qore-style.css,
+	  docs/tuxedo-module-doc.html: updated documentation to current
+	  docbook documentation as separated from qore library docs
+
+2008-09-05 13:05  david_nichols
+
+	* docs/tuxedo-module-doc.html: updated stickwiki to latest version,
+	  started adding TuxedoAdapter class docs
+
+2008-09-03 12:41  david_nichols
+
+	* src/Makefile.am: build fixes
+
+2008-09-03 12:11  david_nichols
+
+	* COPYING: updated license for modules to LGPL (*not* GPL)
+
+2008-09-03 09:03  david_nichols
+
+	* AUTHORS: corrected AUTHORS file
+
+2008-09-03 08:41  david_nichols
+
+	* Makefile.am, src/minitest.hpp: fixed rpm build
+
+2008-09-03 08:35  david_nichols
+
+	* Makefile.am, configure.ac, m4, m4/acx_pthread.m4, reconf.sh,
+	  src/QC_TuxedoAdapter.cc, src/QoreTuxedoAdapter.cc,
+	  src/minitest.hpp, src/tuxedo.cc: fixed configure and compile
+	  issues
+
+2008-09-03 08:15  david_nichols
+
+	* ., AUTHORS, COPYING, ChangeLog, INSTALL, Makefile.am, NEWS,
+	  README, configure.ac, docs, docs/tuxedo-module-doc.html,
+	  ltmain.sh, qore-tuxedo-module.spec, src, src/Makefile.am,
+	  src/QC_TuxedoAdapter.cc, src/QC_TuxedoAdapter.h,
+	  src/QoreTuxedoAdapter.cc, src/QoreTuxedoAdapter.h,
+	  src/single-compilation-unit.cc, src/tuxedo.cc,
+	  src/tuxedo_module.h: initial import as separate project
+
