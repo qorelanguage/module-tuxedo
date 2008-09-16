@@ -249,7 +249,7 @@ else
    if test -n "$with_tuxedo"; then
       AC_MSG_RESULT([$with_tuxedo])
    else
-      AC_MSG_RESULT([not found])
+      AC_MSG_ERROR([not found, cannot build module without Tuxedo headers and libraries])
       unset with_tuxedo
    fi
 fi
