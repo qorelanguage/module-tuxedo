@@ -24,6 +24,6 @@ endif
 endif
 
 install-exec-hook:
-	mv $(DESTDIR)$(libdir)/tuxedo.$(MODULE_SUFFIX) $(DESTDIR)$(libdir)/tuxedo.qmod
+	mv $(DESTDIR)$(libdir)/tuxedo.$(MODULE_SUFFIX) $(DESTDIR)$(libdir)/tuxedo-api-$(MODULE_API).qmod
 	rm -f $(DESTDIR)$(libdir)/tuxedo.la
 

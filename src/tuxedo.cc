@@ -22,7 +22,10 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
+#include "../config.h"
+
 #include <qore/Qore.h>
+
 #include "minitest.hpp"
 
 #include "tuxedo_module.h"
@@ -33,9 +36,8 @@
 
 #include "QC_TuxedoAdapter.h"
 
-#ifndef QORE_MONOLITHIC
 DLLEXPORT char qore_module_name[] = "tuxedo";
-DLLEXPORT char qore_module_version[] = "0.1";
+DLLEXPORT char qore_module_version[] = PACKAGE_VERSION;
 DLLEXPORT char qore_module_description[] = "Connection to Tuxedo 9.1 (should be compatible with older versions).";
 DLLEXPORT char qore_module_author[] = "Pavel Vozenilek";
 DLLEXPORT char qore_module_url[] = "http://qore.sourceforge.net";
@@ -45,13 +47,11 @@ DLLEXPORT qore_module_init_t qore_module_init = tuxedo_module_init;
 DLLEXPORT qore_module_ns_init_t qore_module_ns_init =tuxedo_module_ns_init;
 DLLEXPORT qore_module_delete_t qore_module_delete = tuxedo_module_delete;
 DLLEXPORT qore_license_t qore_module_license = QL_LGPL;
-#endif
 
 //------------------------------------------------------------------------------
 #ifdef DEBUG
 // exported
-AbstractQoreNode* runTuxedoTests(const QoreListNode* params, ExceptionSink* xsink)
-{
+AbstractQoreNode* runTuxedoTests(const QoreListNode* params, ExceptionSink* xsink) {
   minitest::result res = minitest::execute_all_tests();
   if (res.all_tests_succeeded) {
     printf("Tuxedo module: %d tests succeeded\n", res.sucessful_tests_count);
@@ -63,14 +63,12 @@ AbstractQoreNode* runTuxedoTests(const QoreListNode* params, ExceptionSink* xsin
   return 0;
 }
 
-TEST()
-{
+TEST() {
   // just an example of empty test
 }
 #endif
 
-static void add_constants(QoreNamespace* ns)
-{
+static void add_constants(QoreNamespace* ns) {
   // Queueing errors and constants
   ns->addConstant("QMEABORTED", new QoreBigIntNode(QMEABORTED));
   ns->addConstant("QMEBADQUEUE", new QoreBigIntNode(QMEBADQUEUE));

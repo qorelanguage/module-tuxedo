@@ -43,7 +43,7 @@
 
 Summary: Tuxedo Module for Qore
 Name: qore-tuxedo-module
-Version: 0.1
+Version: 0.1.1
 Release: 1%{dist}
 License: LGPL
 Group: Development/Languages
@@ -87,7 +87,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(-,root,root,-)
-%{module_dir}/tuxedo.qmod
+%{module_dir}/tuxedo-api-%{module_api}.qmod
 %doc COPYING README ChangeLog AUTHORS docs/tuxedo-module-doc.html docs/qore-style.css docs/img
 
 %changelog

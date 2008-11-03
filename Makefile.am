@@ -8,6 +8,7 @@ noinst_HEADERS = src/QC_TuxedoAdapter.h \
 	src/minitest.hpp
 
 EXTRA_DIST = COPYING ChangeLog AUTHORS README \
+	RELEASE-NOTES \
 	qore-tuxedo-module.spec \
         docs/qore-style.css \
         docs/img/acrobat_a.gif \
