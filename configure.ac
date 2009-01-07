@@ -1,7 +1,7 @@
 # Process this file with autoconf to produce a configure script.
 
 # AC_PREREQ(2.59)
-AC_INIT([qore-tuxedo-module], [0.1.1],
+AC_INIT([qore-tuxedo-module], [0.1.2],
         [David Nichols <nicholsman@gmail.com>],
         [qore-tuxedo-module])
 AM_INIT_AUTOMAKE
@@ -14,7 +14,8 @@ AC_DISABLE_STATIC
 AC_LIBTOOL_DLOPEN
 AM_PROG_LIBTOOL
 AC_PROG_INSTALL
-AC_PROG_RANLIB
+
+AC_CONFIG_MACRO_DIR([m4])
 
 #LT_PREREQ([2.2])
 #LT_INIT([disable-shared])
@@ -33,6 +34,11 @@ else
    if test $ARCH = i686 -o $ARCH = i586 -o $ARCH = athlon ; then
       ARCH=i386
    fi
+fi
+
+# set find prefix
+if test -n "$prefix" -a "$prefix" != "NONE"; then
+   find_prefix="$prefix"
 fi
 
 #AC_CANONICAL_HOST
@@ -206,8 +212,7 @@ CXXFLAGS="$CXXFLAGS $PTHREAD_CFLAGS"
 LDFLAGS="$LDFLAGS $PTHREAD_LIBS"
 
 # function to help find the tuxedo directory
-find_tux()
-{
+find_tux() {
     d=`ls -d $1/bea/tuxedo* 2>/dev/null | tail -1`;
     if test -n "$d" -a -d "$d"; then
         tux_dir="$d"
@@ -244,7 +249,7 @@ else
    if test -n "$TUXDIR" -a -f "$TUXDIR/include/atmi.h" -a -e "$TUXDIR/lib/libtux.a"; then
       with_tuxedo=$TUXDIR
    else
-      for dir in /opt /usr /usr/local /apps; do
+      for dir in "${find_prefix}" /opt /usr /usr/local /apps; do
          find_tux $dir
 	 if test -n "$tux_dir" -a -f "$tux_dir/include/atmi.h" -a -e "$tux_dir/lib/libtux.a"; then
 	    with_tuxedo="$tux_dir"
@@ -332,8 +337,7 @@ set_qore_cppflags()
     fi
 }
 
-find_qore()
-{
+find_qore() {
     lib=$1/lib${LIBSUFFIX}
 
     # if we only want the static qore libraries
@@ -387,7 +391,7 @@ AC_ARG_WITH([qore-dir],
   [with_qore_dir="$QORE_DIR"])
 
 AC_MSG_CHECKING([for qore libraries and header files])
-for dir in "${with_qore_dir}" /usr / /usr/local /opt/gnu /opt/qore /usr/local/qore /opt/local /sw /usr/sfw /opt/sfw; do
+for dir in "${with_qore_dir}" "${find_prefix}" /usr / /usr/local /opt/gnu /opt/qore /usr/local/qore /opt/local /sw /usr/sfw /opt/sfw; do
     find_qore $dir
     if test -n "$QORE_LDFLAGS"; then
         break

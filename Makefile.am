@@ -23,5 +23,7 @@ EXTRA_DIST = COPYING ChangeLog AUTHORS README \
         docs/img/word.gif \
 	docs/tuxedo-module-doc.html
 
+ACLOCAL_AMFLAGS=-I m4
+
 libtool: $(LIBTOOL_DEPS)
 	$(SHELL) ./config.status --recheck
